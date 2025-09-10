@@ -11,5 +11,3 @@ while n<5:
         print(num, end=" ")
     print("\n")
     n += 1
-
-exit(0)
