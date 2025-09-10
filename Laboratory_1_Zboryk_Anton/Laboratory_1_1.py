@@ -17,3 +17,4 @@ elif a<b:
     X = float((a-5)/b)
 
 print(X)
+exit()
