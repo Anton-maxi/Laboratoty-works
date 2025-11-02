@@ -58,7 +58,7 @@ while not inputFileOK:
                             k = k + 1 if k < 10 else 1
                 except IOError:
                     print("Помилка із додаванням інформації у файл")
-            try:
+            try:     #в)
                 with open(inputFileName2, "r+") as inputFile2:
                     for data in inputFile2:
                         print(data, end="")
