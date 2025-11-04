@@ -5,6 +5,9 @@
 # в) читає вміст файла TF12_2 і друкує його по рядках.
 
 import random
+
+
+
 inputFileName1 = "TF12_1.txt"
 inputFileName2 = "TF12_2.txt"
 inputFileOK = False
@@ -47,17 +50,19 @@ while not inputFileOK:
         if inputFileOK:
             print("Успішне відкриття файлу", inputFileName2)
             open(inputFileName2, "w+").close()
-            with open(inputFileName2, "a+") as inputFile2, open(inputFileName1, "r+") as inputFile1:
-                try:
-                    for line in inputFile1:
-                        k = 1
-                        i = 0
-                        while i < len(line):
-                            inputFile2.write(line[i:i + k] + "\n")
-                            i += k
-                            k = k + 1 if k < 10 else 1
-                except IOError:
-                    print("Помилка із додаванням інформації у файл")
+            try:
+                with open(inputFileName2, "a+") as inputFile2, open(inputFileName1, "r+") as inputFile1:
+                    data = inputFile1.read()
+                    data = data.replace("\r", "").replace("\n", "")  # прибираємо всі переноси
+                    i = 0
+                    k = 1
+                    while i < len(data):
+                        inputFile2.write(data[i:i + k] + "\n")
+                        i += k
+                        k = k + 1 if k < 10 else 1
+
+            except IOError:
+                print("Помилка із додаванням інформації у файл")
             try:     #в)
                 with open(inputFileName2, "r+") as inputFile2:
                     for data in inputFile2:
