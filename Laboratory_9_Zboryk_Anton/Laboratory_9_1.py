@@ -52,7 +52,15 @@ try:
 
     csvfile.close()
 
-
 except IOError:
 
     print("Файл Population.csv не знайдено!")
+
+try:
+    with open("Population_results.csv", "w", newline="", encoding="utf-8") as outfile:
+        writer = csv.writer(outfile)
+        writer.writerow(["Тип", "Рік", "Значення"])
+        writer.writerow(["Максимум", max_value[0], max_value[1]])
+        writer.writerow(["Мінімум", min_value[0], min_value[1]])
+except IOError:
+    print("Файл Population_result.csv не знайдено!")
