@@ -1,4 +1,3 @@
-
 import matplotlib.pyplot as plt
 #Скоригований чистий національний дохід на душу населення (у поточних доларах США)
 
@@ -48,6 +47,28 @@ plt.ylabel('$ USA', fontsize=12, color='r') # позначення вісі ор
 plt.legend()
 plt.grid()
 plt.xticks(x[::5])
+plt.show()
+
+flag=False
+
+while flag==False:
+    choice = input("Оберіть для якої країни вивести стовпчикову діаграму!\nВпишіть або назву 'Ukraine' або 'Poland', щоб вивести стовпчикову діаграму для цієї країни\n")
+    if choice.lower() == "ukraine":
+        y = y_ukraine
+        flag=True
+    elif choice.lower() == "Poland":
+        y = y_poland
+        flag = True
+    else:
+        print("Помилка! Введіть назву країни ще раз!")
+
+ax = plt.gca()
+ax.bar(x, y)
+
+ax.set_xticks(x)
+
+ax.set_xticklabels([str(year) for year in x], rotation=45)
+
 plt.show()
 
 
